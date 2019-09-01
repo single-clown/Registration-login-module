@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/myApp/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/static/myApp/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/myApp/css/animate-custom.css" />
+	<script type="text/javascript" charset="UTF-8" src="/static/myApp/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/static/myApp/js/login.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/static/myApp/js/regist.js"></script>
+</head>
+<body>
+    <div class="container">
+            <header></header>
+            <section>
+                <div id="container_demo" >
+					<a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form  action="/login/" method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+                                <h1>Login</h1>
+                                <p>
+                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder=""/>
+                                </p>
+                                <p>
+                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="" />
+                                </p>
+								<span id="invalid_account" class="error" style="display: none;color: red">该用户不存在！</span>
+								<span id="invalid_passwd" class="error" style="display: none;color: red">密码输入错误！</span>
+                                <p class="login button">
+                                    <input type="submit" value="Login" id="login_button"/>
+								</p>
+                                <p class="change_link">
+									Not a member yet ?
+									<a href="#toregister" class="to_register">Join us</a>
+								</p>
+                            </form>
+                        </div>
+
+                        <div id="register" class="animate form">
+                            <form  action="/regist/"  method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+                                <h1> Sign up </h1>
+                                <p>
+                                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="用户名长度至少为4个字符" />
+                                </p>
+								<span id="accunterr" class="error" style="display: none;color: red">账号格式输入错误！</span>
+                                <span id="checkerr" class="error" style="display: none;color: red">该账号已经被占用，请重新输入！</span>
+                                <p>
+                                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="密码长度应为6-16位"/>
+                                </p>
+								<span id="passerr" class="error" style="display: none;color: red">密码格式输入错误！</span>
+                                <p>
+                                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="两次输入密码应一致"/>
+                                </p>
+								<span id="passwderr" class="error" style="display: none;color: red">两次密码输入不一致！</span>
+                                <p class="signin button">
+									<input type="submit" id="regist_button" disabled="disabled" value="Sign up" />
+								</p>
+                                <p class="change_link">
+									Already a member ?
+									<a href="#tologin" class="to_register"> Go and log in </a>
+								</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <div><span style="margin-left: 10px;margin-top: 200px">copyright©小泉</span></div>
+        </div>
+</body>
+</html>
